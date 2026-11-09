@@ -1,0 +1,11 @@
+site_name: My Docs
+
+theme:
+  name: material
+
+nav:
+  - Inicio: index.md
+  - Arquitectura: arquitectura.md
+  - Funcionalitats: funcionalitats.md
+  - Instal·lació: instalacio.md
+  - API: api.md
