@@ -4,7 +4,7 @@ theme:
   name: material
 
 nav:
-  - Inicio: index.md
+  - Inici: index.md
   - Arquitectura: arquitectura.md
   - Funcionalitats: funcionalitats.md
   - Instal·lació: instalacio.md
