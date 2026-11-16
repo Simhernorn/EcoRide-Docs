@@ -1,11 +1,27 @@
-site_name: My Docs
+site_name: EcoRide · Documentació
 
 theme:
   name: material
+  palette:
+    - scheme: default
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-7
+        name: Canviar a mode fosc
+    - scheme: slate
+      primary: green
+      accent: light green
+      toggle:
+        icon: material/brightness-4
+        name: Canviar a mode clar
+
+plugins: 
+  - search
 
 nav:
   - Inici: index.md
-  - Arquitectura: arquitectura.md
-  - Funcionalitats: funcionalitats.md
   - Instal·lació: instalacio.md
+  - Funcionalitats: funcionalitats.md
+  - Arquitectura: arquitectura.md
   - API: api.md

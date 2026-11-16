@@ -97,39 +97,14 @@
 - Escriure un `README` amb els passos d'instal·lació i execució
 - Anotar els problemes habituals i les solucions
 
-## 3. Script
-
-El següent script permet fer la preparacio de l'entorn del punt 2 al punt 6, no copieu i executeu directament, ja que tindreu que cambiar algunes coses:
+## 3. Comandaments
 
 ```bash
-#!/bin/sh
-# Script de preparació de l'entorn de desenvolupament d'EcoRide
-# Pensat per a Ubuntu/Debian (usa apt i snap). Executa'l amb: sh setup-entorn.sh
-set -e
+# ---------- 1. Clonar repositori ----------
+git clone https://github.com/Simhernorn/EcoRide.git ecoride
+cd ecoride
 
-# ---------- CONFIGURACIÓ (modifica estos valors) ----------
-REPO_URL="https://github.com/Simhernorn/EcoRide.git"
-REPO_DIR="ecoride"
-FEATURE_BRANCH="feature/nova-funcionalitat"
-
-# ---------- 1. Instal·lació d'eines ----------
-sudo apt-get update
-sudo apt-get install -y openjdk-21-jdk
-sudo apt-get install -y maven
-sudo apt-get install -y gradle
-sudo apt-get install -y docker.io
-sudo apt-get install -y docker-compose-v2
-sudo snap install flutter --classic
-sudo apt-get install -y android-sdk
-
-# Permet usar Docker sense sudo en futures sessions
-sudo usermod -aG docker "$USER" || true
-
-# ---------- 2. Clonar el repositori ----------
-git clone "$REPO_URL" "$REPO_DIR"
-cd "$REPO_DIR"
-
-# ---------- 3. Crear les branques ----------
+# ---------- 2. Crear les branques ----------
 # Si el repositori està buit, crea un commit inicial perquè es puguen crear branques
 if ! git rev-parse --verify HEAD >/dev/null 2>&1; then
     git commit --allow-empty -m "Commit inicial"
@@ -137,10 +112,10 @@ fi
 
 git checkout -B main
 git branch -f develop
-git branch -f "$FEATURE_BRANCH"
+git branch -f "feature/nova-funcionalitat"
 git checkout develop
 
-# ---------- 4. Aixecar PostgreSQL (PostGIS) i Redis amb Docker Compose ----------
+# ---------- 3. Aixecar PostgreSQL (PostGIS) i Redis amb Docker Compose ----------
 if [ ! -f docker-compose.yml ]; then
 cat > docker-compose.yml <<'EOF'
 services:
